@@ -146,7 +146,7 @@ if(i<P.length-1){i++;show();return}
 document.getElementById('senderr').style.display='none';
 if(SCRIPT_URL.indexOf('http')!==0){fail('This form is not connected to the sheet yet. Tell the HR team.');return}
 nx.disabled=true;nx.textContent='Sending...';
-fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(collect())}).then(finish).catch(function(){fail('Could not send. Check your connection and try again.')})};
+fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(collect())}).then(function(r){if(r.ok){finish()}else{r.json().then(function(d){var m=(d.errors&&d.errors.length)?d.errors.map(function(e){return (e.field?e.field+': ':'')+e.message}).join(' | '):(d.error||'Unknown error');fail('Formspree says: '+m)}).catch(function(){fail('Formspree error '+r.status)})}}).catch(function(){fail('Could not send. Check your connection and try again.')})};
 bk.onclick=function(){if(i>0){i--;show()}};
 document.getElementById('hrs').oninput=function(){document.getElementById('ho').innerHTML=this.value+' <small>hrs / week</small>'};
 show()})();
