@@ -134,7 +134,7 @@ function valid(){var ok=true;
 P[i].querySelectorAll('input[required],select[required],textarea[required]').forEach(function(f){var g=f.checkValidity()&&f.value.trim()!=='';f.classList.toggle('bad',!g);if(!g)ok=false});
 if(i===1){var r=document.querySelector('input[name=t1]:checked');document.getElementById('e1').style.display=r?'none':'block';if(!r)ok=false}
 return ok}
-var SCRIPT_URL='https://script.google.com/macros/s/AKfycbziqsTXj6xPHzKJX2dMMzz5NU6fYCYm1a94gOp338xUQ7DNAhXd0jyQylSw1US-981-iQ/exec';
+var SCRIPT_URL='https://formspree.io/f/mrpqjyva';
 function v(id){return document.getElementById(id).value.trim()}
 function picked(k){return [].slice.call(P[k].querySelectorAll('.chip input:checked')).map(function(c){return c.nextElementSibling.textContent}).join(', ')}
 function collect(){var r=document.querySelector('input[name=t1]:checked');
